@@ -5,16 +5,17 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
+import './Cards.css'
 
 interface Iprops {
     data : any[]
 }
 const CardComponent : React.FC<Iprops> = ({data}) => {
   return (
-    <Box sx={{ display: 'flex', marginRight: '20px'}}>
+    <Box className="card-grid">
     {
-        data.map((job) => (
-            <Card sx={{ maxWidth: 345 }}>
+        data.map((job, index) => (
+            <Card className="card" key={index}>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {job?.companyName}
@@ -24,7 +25,7 @@ const CardComponent : React.FC<Iprops> = ({data}) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Apply</Button>
+                <Button variant='contained' disableElevation className='apply-button' fullWidth>⚡ Easy Apply</Button>
               </CardActions>
             </Card>
         ))

@@ -1,0 +1,38 @@
+.card-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    justify-content: space-between; /* Distribute space between cards */
+    gap: 20px; /* Adjust gap between cards as needed */
+}
+
+.card {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust width of each card to fit 3 cards per row with gap */
+    max-width: calc(33.33% - 20px); /* Adjust max-width of each card */
+    height: 600px; /* Specific height for the card */
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.apply-button{
+    background-color: rgb(85, 239, 196);
+    color: #000000;
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .card {
+        flex: 0 0 calc(50% - 20px); /* Adjust width of each card to fit 2 cards per row with gap */
+        max-width: calc(50% - 20px); /* Adjust max-width of each card */
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        flex: 0 0 100%; /* Set width of each card to 100% to stack cards on smaller screens */
+        max-width: 100%; /* Set max-width of each card to 100% */
+    }
+}
