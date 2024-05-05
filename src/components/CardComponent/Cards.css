@@ -12,16 +12,74 @@
     border: 1px solid #ccc;
     padding: 10px;
     box-sizing: border-box; /* Include padding and border in the width */
+    /* height: 100% !important; */
+    position: relative !important;
+    border-radius: 20px !important;
+    padding: 5px !important;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .apply-button{
-    background-color: rgb(85, 239, 196);
-    color: #000000;
-    text-transform: none;
-    font-size: 16px;
+    background-color: rgb(85, 239, 196) !important;
+    color: #000000 !important;
+    text-transform: none !important;
+    font-size: 16px !important;
     font-weight: 500;
+    border-radius: 8px !important; 
+    border: none !important;
+ 
+}
+.apply-button:active {
+    border: none !important;
 }
 
+.logo{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.header-box{
+    display: flex;
+}
+.company-name{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+.job-role{
+    font-size: 14px;
+    line-height: 1.5;
+}
+.location{
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.job-desc{
+    white-space: pre-wrap;
+    font-size: 14px;
+}
+.about-company{
+    margin: 0px;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+.card-salary{
+    font-size: 14px !important;
+    font-weight: 500;
+    margin: 8px 0 !important;
+}
+.experience{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+    margin-top: 10px !important;
+}
 /* Responsive styles */
 @media (max-width: 992px) {
     .card {

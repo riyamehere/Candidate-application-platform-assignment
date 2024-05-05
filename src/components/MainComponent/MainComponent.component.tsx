@@ -1,9 +1,11 @@
 // Parent Component (e.g., App)
+import { Box } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { fetchJobsData } from '../../services/jobsData.service';
 import { TjobDataPayload } from '../../types';
 import CardComponent from '../CardComponent/Card.component';
 import Filter from './Filter';
+import './MainComponent.css'
 
 const WrapperComponent = () => {
   const [data, setData] = useState([]);
@@ -29,10 +31,10 @@ const WrapperComponent = () => {
 //   };
 
   return (
-    <div>
+    <Box className='parentDiv'>
       {/* <Filter onChange={handleFilterChange} /> */}
       <CardComponent data={data}/>
-    </div>
+    </Box>
   );
 };
 

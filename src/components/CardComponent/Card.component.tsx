@@ -17,15 +17,28 @@ const CardComponent : React.FC<Iprops> = ({data}) => {
         data.map((job, index) => (
             <Card className="card" key={index}>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {job?.companyName}
+                <Typography gutterBottom variant="h5" component="div" className='header-box'>
+                  <Box>
+                  <img src={job?.logoUrl} alt='logo' className='logo'/>
+                  </Box>
+                  <Box>
+                    <p className='company-name'>{job?.companyName}</p>
+                    <p className='job-role'>{job?.jobRole}</p>
+                    <p className='location'>{job?.location}</p>
+                  </Box>
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography className='card-salary'>Estimated Salary: {job?.salaryCurrencyCode} {job?.minJdSalary ? `${job?.minJdSalary} - ` : ''} {job?.maxJdSalary ? job?.maxJdSalary: ''} ✅</Typography>
+                <Typography className='about-company'>
+                  About Company:
+                </Typography>
+                <Typography variant="body2" color="text.secondary" className='job-desc'>
                   {job?.jobDetailsFromCompany}
                 </Typography>
+                <Typography className='experience'>Experience required</Typography>
+                <Typography>{job?.minExp ? `${job?.minExp} -` : ''} {job?.maxExp ? job?.maxExp : 'null'} </Typography>
               </CardContent>
               <CardActions>
-                <Button variant='contained' disableElevation className='apply-button' fullWidth>⚡ Easy Apply</Button>
+                <Button disableElevation className='apply-button' fullWidth>⚡ Easy Apply</Button>
               </CardActions>
             </Card>
         ))
