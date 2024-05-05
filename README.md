@@ -6,6 +6,12 @@ This App is built using [React](https://github.com/facebook/react) and [TypeScri
 
 https://github.com/riyamehere/Candidate-application-platform-assignment/assets/60165994/008d7054-ec95-4ec9-9a41-bebd92d5becf
 
+### Features
+
+1. Filter Functionality
+2. Infinite scroll feature
+3. Responsive design
+   
 # Table of contents
 
 - [Installation and Project Run](#installation-and-project-run)
@@ -38,12 +44,6 @@ In the project directory, you can run the following scripts:
 | **npm run dev**               | Runs the app on 4000 port .                      |
 | **npm run build**        | Builds the app and creates a minified dist file for deployment                       |
 | **npm run preview**    | Opens the app in preview mode after the build                 |
-
-### Features
-
-1. Filter Functionality
-2. Infinite scroll feature
-3. Responsive design
 
 ### Coding Standards
 
