@@ -1,3 +1,11 @@
 .parentDiv{
     padding: 30px;
 }
+
+.no-data{
+    color: black;
+    font-size: 25px;
+    position: fixed;
+    top: 40%;
+    left: 45%;
+}

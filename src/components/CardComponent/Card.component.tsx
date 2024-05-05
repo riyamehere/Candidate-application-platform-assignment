@@ -6,11 +6,20 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import './Cards.css'
+import { useState } from 'react';
 
 interface Iprops {
     data : any[]
 }
 const CardComponent : React.FC<Iprops> = ({data}) => {
+  const [expandedMap, setExpandedMap] = useState({});
+
+  const toggleExpanded = (index) => {
+    setExpandedMap(prevState => ({
+      ...prevState,
+      [index]: !prevState[index]
+    }));
+  };
   return (
     <Box className="card-grid">
     {
@@ -32,8 +41,11 @@ const CardComponent : React.FC<Iprops> = ({data}) => {
                   About Company:
                 </Typography>
                 <Typography variant="body2" color="text.secondary" className='job-desc'>
-                  {job?.jobDetailsFromCompany}
+                  {expandedMap[index] ? job.jobDetailsFromCompany : `${job.jobDetailsFromCompany.slice(0, 500)}...`}
                 </Typography>
+                <span className="read-more" onClick={() => toggleExpanded(index)}>
+                  {expandedMap[index] ? "Read Less" : "Read More"}
+                </span>
                 <Typography className='experience'>Experience required</Typography>
                 <Typography>{job?.minExp ? `${job?.minExp} -` : ''} {job?.maxExp ? job?.maxExp : 'null'} </Typography>
               </CardContent>

@@ -1,0 +1,31 @@
+.fields-style{
+    width: 250px;
+    margin-right: 20px !important;
+}
+
+.filters{
+    position: fixed;
+  top: 0;
+  left: 20px;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  z-index: 999;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .fields-style{
+        width: 250px;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .fields-style{
+        width: 250px;
+        margin-bottom: 20px !important;
+    }
+}

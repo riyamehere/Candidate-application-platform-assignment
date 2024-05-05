@@ -3,6 +3,7 @@
     flex-wrap: wrap; /* Allow cards to wrap to the next line */
     justify-content: space-between; /* Distribute space between cards */
     gap: 20px; /* Adjust gap between cards as needed */
+    margin-top: 100px;
 }
 
 .card {
@@ -27,6 +28,7 @@
     font-weight: 500;
     border-radius: 8px !important; 
     border: none !important;
+    margin-bottom: 10px;
  
 }
 .apply-button:active {
@@ -80,17 +82,46 @@
     color: #8b8b8b;
     margin-top: 10px !important;
 }
+
+/* Styles for JobDescription component */
+.job-description {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    max-height: 100px; /* Limit height to show a certain number of lines */
+    overflow: hidden; /* Hide overflow text */
+  }
+  .read-more {
+    color: blue;
+    cursor: pointer;
+  }
+  
 /* Responsive styles */
-@media (max-width: 992px) {
+@media (max-width: 1080px) {
     .card {
         flex: 0 0 calc(50% - 20px); /* Adjust width of each card to fit 2 cards per row with gap */
         max-width: calc(50% - 20px); /* Adjust max-width of each card */
     }
+    .card-grid {
+        display: flex;
+        flex-wrap: wrap; /* Allow cards to wrap to the next line */
+        justify-content: space-between; /* Distribute space between cards */
+        gap: 20px; /* Adjust gap between cards as needed */
+        margin-top: 170px;
+    }
+    
 }
 
 @media (max-width: 576px) {
     .card {
         flex: 0 0 100%; /* Set width of each card to 100% to stack cards on smaller screens */
         max-width: 100%; /* Set max-width of each card to 100% */
+    }
+    .card-grid {
+        display: flex;
+        flex-wrap: wrap; /* Allow cards to wrap to the next line */
+        justify-content: space-between; /* Distribute space between cards */
+        gap: 20px; /* Adjust gap between cards as needed */
+        margin-top: 320px;
     }
 }
