@@ -4,36 +4,51 @@ import React, { useState, useEffect } from 'react';
 import { fetchJobsData } from '../../services/jobsData.service';
 import { TjobDataPayload } from '../../types';
 import CardComponent from '../CardComponent/Card.component';
-import Filter from './Filter';
 import './MainComponent.css'
 
 const WrapperComponent = () => {
-  const [data, setData] = useState([]);
-  const [filters, setFilters] = useState({}); // State to manage filter options
+  const [offset, setOffset] = useState(0);
+    const limit = 10;
+    const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     fetchData(); // Fetch data initially and whenever filters change
   }, []);
 
-  const fetchData = async () => {
-    // Perform API integration to fetch data based on filter options
-    // Update the 'data' state with the fetched data
-    const payload : TjobDataPayload = {
-        "limit": 10,
-        "offset": 0
-       }
+  useEffect(() => {
+    //check if the condition for infinite scroll
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
+      ) {
+        fetchData();
+      }
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
+const fetchData = async () => {
+    const payload: TjobDataPayload = {
+      "limit": limit,
+      "offset": offset
+    };
     const response = await fetchJobsData(payload);
-    setData(response?.data?.jdList)
+    // Append new data to existing data
+    setFilteredData(prevData => [...prevData, ...response?.data?.jdList]);
+    // Increment offset for the next fetch
+    setOffset(prevOffset => prevOffset + limit);
   };
+  
 
-//   const handleFilterChange = (newFilters) => {
-//     setFilters(newFilters); // Update filter options when the user selects filters
-//   };
 
   return (
     <Box className='parentDiv'>
-      {/* <Filter onChange={handleFilterChange} /> */}
-      <CardComponent data={data}/>
+      <CardComponent data={filteredData}/>
     </Box>
   );
 };
