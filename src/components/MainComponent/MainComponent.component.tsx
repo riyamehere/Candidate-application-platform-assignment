@@ -1,18 +1,28 @@
-import { Box, Typography } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import { Box} from '@mui/material';
+import { useState, useEffect } from 'react';
 import { fetchJobsData } from '../../services/jobsData.service';
 import { TjobDataPayload } from '../../types';
 import CardComponent from '../CardComponent/Card.component';
 import FilterComponent from '../FilterComponent/Filter.component';
 import './MainComponent.css';
+import SentimentVeryDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
+import { TfilterProp } from '../../types/filterProps.type';
+
+/**
+ * @author      : Riya Mehere
+ * @date        : 2024-05-05
+ * @description : This is the parent component for filter and card component
+ * @params      : -
+ * @return      : Renders the filter and card component, api calls and sets the jobs data and 
+ *                passes down this as prop in child component
+ */
 
 const WrapperComponent = () => {
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
-  const [total, setTotal] = useState(0);
   const limit = 10;
   const [filteredData, setFilteredData] = useState([]);
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<TfilterProp>({
     minExp: '',
     companyName: '',
     location: '',
@@ -44,7 +54,6 @@ const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
   
     if (scrollTop + clientHeight >= scrollHeight - 10) {
-      console.log('Fetching more data...');
       fetchData();
     }
   };
@@ -120,15 +129,13 @@ const handleScroll = () => {
 
   // Function to handle filter change
   const handleFilterChange = (e) => {
-    console.log(e.target.name, e.target.value)
     const { name, value } = e.target;
     setFilters({ ...filters, [name]: value });
   };
 
   // Extract unique values for minExp, role, and basePay from data (full dataset)
-  const uniqueMinExp = Array.from(new Set(data.map(job => job.minExp)));
-  const uniqueRoles = Array.from(new Set(data.map(job => job.jobRole)));
-  const uniqueBasePay = Array.from(new Set(data.map(job => job.minJdSalary)));
+  const uniqueMinExp = Array.from(new Set(data.map(job => job.minExp))) as [];
+  const uniqueRoles = Array.from(new Set(data.map(job => job.jobRole))) as [];
 
   return (
     <Box className='parentDiv'>
@@ -142,7 +149,8 @@ const handleScroll = () => {
             <CardComponent data={filteredData} />
         ) : (
             <Box className='no-data'>
-                <p>No data available</p>
+                <SentimentVeryDissatisfiedOutlinedIcon className='error-icon'/>
+                <p>No jobs available for this category at this moment</p>
             </Box>
         )}
     </Box>

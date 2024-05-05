@@ -7,11 +7,16 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import './Cards.css'
 import { useState } from 'react';
+import { ICardprops } from '../../interfaces/cardProps.interface';
 
-interface Iprops {
-    data : any[]
-}
-const CardComponent : React.FC<Iprops> = ({data}) => {
+/**
+ * @author      : Riya Mehere
+ * @date        : 2024-05-05
+ * @description : This is the filter component
+ * @params      : -
+ * @return      : Renders the input and the select fields for filter functionality
+ */
+const CardComponent : React.FC<ICardprops> = ({data}) => {
   const [expandedMap, setExpandedMap] = useState({});
 
   const toggleExpanded = (index) => {
@@ -36,7 +41,7 @@ const CardComponent : React.FC<Iprops> = ({data}) => {
                     <p className='location'>{job?.location}</p>
                   </Box>
                 </Typography>
-                <Typography className='card-salary'>Estimated Salary: {job?.salaryCurrencyCode} {job?.minJdSalary ? `${job?.minJdSalary} - ` : ''} {job?.maxJdSalary ? job?.maxJdSalary: ''} ✅</Typography>
+                <Typography className='card-salary'>Estimated Salary: {job?.salaryCurrencyCode} {job?.minJdSalary ? `${job?.minJdSalary}k - ` : ''} {job?.maxJdSalary ? `${job?.maxJdSalary}k`: ''} ✅</Typography>
                 <Typography className='about-company'>
                   About Company:
                 </Typography>
@@ -47,10 +52,10 @@ const CardComponent : React.FC<Iprops> = ({data}) => {
                   {expandedMap[index] ? "Read Less" : "Read More"}
                 </span>
                 <Typography className='experience'>Experience required</Typography>
-                <Typography>{job?.minExp ? `${job?.minExp} -` : ''} {job?.maxExp ? job?.maxExp : 'null'} </Typography>
+                <Typography>{job?.minExp ? `${job?.minExp} -` : ''} {job?.maxExp ? `${job?.maxExp} years` : 'null'} </Typography>
               </CardContent>
-              <CardActions>
-                <Button disableElevation className='apply-button' fullWidth>⚡ Easy Apply</Button>
+              <CardActions className=''>
+                <Button className='apply-button' fullWidth>⚡ Easy Apply</Button>
               </CardActions>
             </Card>
         ))
