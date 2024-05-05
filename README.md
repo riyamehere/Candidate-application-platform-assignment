@@ -4,6 +4,8 @@ This is a candidate application platform having filter options based on various 
 
 This App is built using [React](https://github.com/facebook/react) and [TypeScript](https://github.com/microsoft/TypeScript) with [Vite](https://github.com/vitejs/vite).
 
+https://github.com/riyamehere/Candidate-application-platform-assignment/assets/60165994/008d7054-ec95-4ec9-9a41-bebd92d5becf
+
 # Table of contents
 
 - [Installation and Project Run](#installation-and-project-run)
